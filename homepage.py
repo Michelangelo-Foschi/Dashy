@@ -12,26 +12,6 @@ nav = Navbar()
 BS = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
 app = JupyterDash(external_stylesheets=[dbc.themes.SLATE])
 
-def drawFigure():
-    return  html.Div([
-        dbc.Card(
-            dbc.CardBody([
-                dcc.Graph(
-
-                    figure={
-                        'data': [
-
-                            {'x': [1, 2, 3], 'y': [4, 1, 2], 'type': 'bar', 'name': 'SF'},
-                            {'x': [1, 2, 3], 'y': [2, 4, 5], 'type': 'bar', 'name': u'Montréal'},
-            ],
-  
-        }
-
-                )
- 
-            ])
-        ),  
-    ])
 def drawFigure1():
     return html.Div([
         dbc.Card(
@@ -185,7 +165,7 @@ body = dbc.Container(
                 ], width=6),
                 dbc.Col([
                     drawTextMonthlyRets(),
-                    drawFigure()
+                    drawFigure1()
                 ], width=6),
             ], align='center'),      
         ]), color = 'dark'
@@ -242,13 +222,13 @@ body = dbc.Container(
             dbc.Row([
                 dbc.Col([
                     drawTextRolling(),
-                    drawFigure() 
+                    drawFigureRolling()
                 ], width=6),
              
                 dbc.Col([
 
                     drawTextMonthlyRets(),
-                    drawFigure1() 
+                    drawFigureMonthlyRets()
                 ], width=6),
             ], align='center'), 
             html.Br(),
@@ -259,7 +239,7 @@ body = dbc.Container(
                 ], width=6),
                 dbc.Col([
                     drawTextMonthlyRets(),
-                    drawFigure()
+                    drawFigureDrawDown()
                 ], width=5),
             ], align='center'),      
         ]), color = 'dark'
@@ -317,3 +297,4 @@ app.layout = Homepage()
 
 if __name__ == '__main__':
     app.run_server(debug=True)
+
